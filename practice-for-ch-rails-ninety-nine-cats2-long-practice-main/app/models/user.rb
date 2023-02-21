@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    validates :username, presence:true, uniqueness:true
+    validates :username, :session_token, presence:true, uniqueness:true
     validates :password_digest, presence:true
     validates :password, length: { minimum: 6 }, allow_nil:true
 
@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
     def generate_unique_session_token
         token = SecureRandom::urlsafe_base64
-        while User.exits?(session_token: token)
+        while User.exists?(session_token: token)
             token = SecureRandom::urlsafe_base64
         end
         token
