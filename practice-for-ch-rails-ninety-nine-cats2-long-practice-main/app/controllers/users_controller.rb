@@ -13,6 +13,7 @@ class UsersController < ApplicationRecord
         else
             puts @user.error.full_messages
             render :new
+        end
     end
 
     private
