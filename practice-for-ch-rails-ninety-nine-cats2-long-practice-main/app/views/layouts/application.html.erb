@@ -12,6 +12,11 @@
   </head>
 
   <body>
+    <header>
+      <% if !current_user.nil? %>
+        <h2>Welcome, <%= current_user.username %> ! </h2>
+      <% end %>
+    </header>
     <nav class="main-nav">
       <h1><a href="<%= cats_url %>">99 Cats</a></h1>
     </nav>
